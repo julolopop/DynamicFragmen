@@ -2,9 +2,11 @@ package com.example.usuario.dynamicfragmen;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,7 @@ public class AFragment extends Fragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + "fallo de implementacion");
         }
+        Log.d(TAG_FragmentA,"onAttach");
     }
 
 
@@ -44,7 +47,10 @@ public class AFragment extends Fragment {
         edt_Texto = view.findViewById(R.id.edt_Texto);
         btn_click = view.findViewById(R.id.btn_click);
         sb_tamano = view.findViewById(R.id.sb_tamano);
+
+        Log.d(TAG_FragmentA,"onCreateView");
         return view;
+
     }
 
     @Override
@@ -56,6 +62,8 @@ public class AFragment extends Fragment {
                 mCallBack.OnFragmentAEvent(edt_Texto.getText().toString(), sb_tamano.getProgress());
             }
         });
+
+        Log.d(TAG_FragmentA,"onViewCreated");
     }
 
 
@@ -63,6 +71,8 @@ public class AFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mCallBack = null;
+
+        Log.d(TAG_FragmentA,"onDetach");
     }
 
 }
